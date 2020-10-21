@@ -209,7 +209,26 @@ class CarInterface(CarInterfaceBase):
       ret.lateralTuning.lqr.l = [0.22, 0.318]
       ret.lateralTuning.lqr.dcGain = 0.003
 
+    elif candidate == CAR.K7:
+      tire_stiffness_factor = 0.9
+      ret.mass = 1685. + STD_CARGO_KG
+      ret.wheelbase = 2.855
+      ret.steerRatio = 14.4
+      ret.steerActuatorDelay = 0.3
+      ret.steerRateCost = 0.5
+      ret.steerLimitTimer = 0.4
+      ret.lateralTuning.init('lqr')
+      ret.lateralTuning.lqr.scale = 1850.0
+      ret.lateralTuning.lqr.ki = 0.03
+      ret.lateralTuning.lqr.a = [0., 1., -0.22619643, 1.21822268]
+      ret.lateralTuning.lqr.b = [-1.92006585e-04, 3.95603032e-05]
+      ret.lateralTuning.lqr.c = [1., 0.]
+      ret.lateralTuning.lqr.k = [-100., 450.]
+      ret.lateralTuning.lqr.l = [0.22, 0.318]
+      ret.lateralTuning.lqr.dcGain = 0.003
+
     ret.centerToFront = ret.wheelbase * 0.4
+
 
     # TODO: get actual value, for now starting with reasonable value for
     # civic and scaling by mass and wheelbase
